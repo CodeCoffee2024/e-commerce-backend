@@ -1,0 +1,22 @@
+[
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetNumber": "100",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 1,
+        "user_id" : 1,
+        "isMainShippingAddress" : true,
+        "isMainReturnAddress" : true
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 12",
+        "streetNumber": "300",
+        "zipCode": "1200",
+        "isActive" : true,
+        "barangay_id" : 3,
+        "user_id" : 1,
+        "isMainShippingAddress" : false,
+        "isMainReturnAddress" : false
+    }
+]

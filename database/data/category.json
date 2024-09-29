@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Category 1",
+        "description": "Test Category 1",
+        "isActive" : true
+    },
+    {
+        "name": "Category 2",
+        "description": "Test Category 2",
+        "isActive" : true
+    },
+    {
+        "name": "Category 3",
+        "description": "Test Category 3",
+        "isActive" : true
+    }
+]

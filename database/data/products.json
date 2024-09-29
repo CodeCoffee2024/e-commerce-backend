@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Test Product",
+        "description": "Test Description",
+        "merchant_id": 1,
+        "quantity": 10,
+        "price": 100.00,
+        "isActive" : true,
+        "category_id" : 1
+    },
+    {
+        "name": "Test Product 2",
+        "description": "Test Description 2",
+        "merchant_id": 1,
+        "quantity": 20,
+        "price": 200.00,
+        "isActive" : true,
+        "category_id" : 2
+    },
+    {
+        "name": "Test Product 3",
+        "description": "Test Description 3",
+        "merchant_id": 2,
+        "quantity": 30,
+        "price": 300.00,
+        "isActive" : false,
+        "category_id" : 2
+    }
+]

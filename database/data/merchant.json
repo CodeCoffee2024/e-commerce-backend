@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Merchant 1",
+        "description": "Merchant Description 1",
+        "isActive" : true
+    },
+    {
+        "name": "Merchant 2",
+        "description": "Merchant Description 2",
+        "isActive" : true
+    },
+    {
+        "name": "Merchant 3",
+        "description": "Merchant Description 3",
+        "isActive" : true
+    }
+]
