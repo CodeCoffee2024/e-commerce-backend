@@ -6,6 +6,8 @@
         "quantity": 10,
         "price": 100.00,
         "isActive" : true,
+        "pickup_address_id": 2,
+        "return_address_id": 1,
         "category_id" : 1
     },
     {
@@ -15,15 +17,52 @@
         "quantity": 20,
         "price": 200.00,
         "isActive" : true,
+        "pickup_address_id": 1,
+        "return_address_id": 2,
         "category_id" : 2
     },
     {
         "name": "Test Product 3",
         "description": "Test Description 3",
-        "merchant_id": 2,
+        "merchant_id": 1,
         "quantity": 30,
         "price": 300.00,
         "isActive" : false,
+        "pickup_address_id": 3,
+        "return_address_id": 4,
+        "category_id" : 2
+    },
+    {
+        "name": "Test Product 4",
+        "description": "Test Description 4",
+        "merchant_id": 2,
+        "quantity": 80,
+        "price": 301.00,
+        "isActive" : false,
+        "pickup_address_id": 4,
+        "return_address_id": 3,
+        "category_id" : 2
+    },
+    {
+        "name": "Test Product 5",
+        "description": "Test Description 5",
+        "merchant_id": 3,
+        "quantity": 210,
+        "price": 150.00,
+        "isActive" : false,
+        "pickup_address_id": 5,
+        "return_address_id": 6,
+        "category_id" : 2
+    },
+    {
+        "name": "Test Product 6",
+        "description": "Test Description 6",
+        "merchant_id": 3,
+        "quantity": 2,
+        "price": 400.00,
+        "isActive" : false,
+        "pickup_address_id": 6,
+        "return_address_id": 5,
         "category_id" : 2
     }
 ]

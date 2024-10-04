@@ -26,7 +26,8 @@ class ProductSeeder extends Seeder
                 "quantity" => $value->quantity,
                 "isActive" => 1,
                 "imgPath" => 'uploads/product.jfif',
-
+                "pickup_address_id" => $value->pickup_address_id,
+                "return_address_id" => $value->return_address_id
             ]);
         }
     }

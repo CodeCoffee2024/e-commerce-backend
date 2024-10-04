@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Barangay extends Model
 {
     use HasFactory;
-    public function cityMunicipality() {
-        return $this->belongsTo(CityMunicipality::class,'cityMunicipalityCode');    
+    protected $fillable = ['description'];
+    public function cityMunicipality()
+    {
+        return $this->belongsTo(CityMunicipality::class, 'cityMunicipalityCode', 'code');
     }
     public function province() {
-        return $this->belongsTo(Province::class,'provincialCode');    
+        return $this->belongsTo(Province::class,'provincialCode', 'code');    
     }
     public function region() {
-        return $this->belongsTo(Region::class,'regionCode');    
+        return $this->belongsTo(Region::class,'regionCode', 'code');    
     }
     public function addresses() {
         return $this->belongsTo(Address::class,'address_id');    

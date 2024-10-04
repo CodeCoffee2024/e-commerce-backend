@@ -25,6 +25,7 @@ class StoreAddressRequest extends FormRequest
             'blockLotFloorBuildingName' => ['required','string','max:100'],
             'streetAddress' => ['required','string','max:100'],
             'barangay' => ['required', 'array'],
+            'id' => ['nullable', 'numeric'],
             'barangay.id' => ['required', 'integer'], // Assuming the id is an integer
             'barangay.description' => ['required', 'string'],
             'cityMunicipality' =>  ['required', 'array'],

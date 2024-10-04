@@ -9,7 +9,10 @@ class Merchant extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'description', 'imgPath'];
+    public function addresses() {
+        return $this->hasMany(MerchantAddress::class, 'merchant_id');
+    }
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'merchant_id');
     }
 }

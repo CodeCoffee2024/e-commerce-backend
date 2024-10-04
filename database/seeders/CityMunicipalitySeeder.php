@@ -18,7 +18,7 @@ class CityMunicipalitySeeder extends Seeder
         $json = File::get("database/data/cityMunicipality.json");
         $cityMunicipalities = json_decode($json);
         foreach ($cityMunicipalities as $key => $value) {
-            DB::table('cityMunicipalities')->insert([
+            DB::table('city_municipalities')->insert([
                 "psgcCode" => $value->psgcCode,
                 "description" => $value->description,
                 "code" => $value->code,

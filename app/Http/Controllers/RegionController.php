@@ -37,14 +37,14 @@ class RegionController extends Controller
             $province = $request->query('province');
             $region = $request->query('region');
             $regions = Barangay::where('barangays.isActive', true)
-                ->where('citymunicipalities.isActive', true)
+                ->where('city_municipalities.isActive', true)
                 ->where('provinces.isActive', true)
                 ->where('regions.isActive', true)
                 ->when($barangay, function ($query, $barangay) {
                     return $query->where('barangays.description', 'like', '%' . $barangay . '%');
                 })
                 ->when($cityMunicipality, function ($query, $cityMunicipality) {
-                    return $query->where('cityMunicipalities.description', 'like', '%' . $cityMunicipality . '%');
+                    return $query->where('city_municipalities.description', 'like', '%' . $cityMunicipality . '%');
                 })
                 ->when($province, function ($query, $province) {
                     return $query->where('provinces.description', 'like', '%' . $province . '%');
@@ -52,13 +52,18 @@ class RegionController extends Controller
                 ->when($region, function ($query, $region) {
                     return $query->where('regions.description', 'like', '%' . $region . '%');
                 })
-                ->join('citymunicipalities', 'barangays.cityMunicipalityCode', '=', 'citymunicipalities.code')
+                ->join('city_municipalities', 'barangays.cityMunicipalityCode', '=', 'city_municipalities.code')
                 ->join('provinces', 'barangays.provincialCode', '=', 'provinces.code')
                 ->join('regions', 'barangays.regionCode', '=', 'regions.code')
                 ->select('regions.id', 'regions.description')
                 ->get();
             return RegionFragment::collection($regions);
         }
+    }
+
+    public function all() {
+        $regions = Region::where('isActive', true)->get();
+        return RegionFragment::collection($regions);
     }
 
     /**

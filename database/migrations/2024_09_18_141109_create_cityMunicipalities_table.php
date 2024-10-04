@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cityMunicipalities', function (Blueprint $table) {
+        Schema::create('city_municipalities', function (Blueprint $table) {
             $table->id();
             $table->string('psgcCode');
             $table->string('description');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cityMunicipalities');
+        Schema::dropIfExists('city_municipalities');
     }
 };

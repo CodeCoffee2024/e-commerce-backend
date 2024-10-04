@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call([MerchantSeeder::class]);
         $this->call([CategorySeeder::class]);
-        $this->call([ProductSeeder::class]);
         $this->call([RegionSeeder::class]);
         $this->call([ProvinceSeeder::class]);
         $this->call([CityMunicipalitySeeder::class]);
         $this->call([BarangaySeeder::class]);
         $this->call([AddressSeeder::class]);
+        $this->call([MerchantAddressSeeder::class]);
+        $this->call([ShippingMatrixSeeder::class]);
+        $this->call([ProductSeeder::class]);
     }
 }

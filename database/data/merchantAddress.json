@@ -1,0 +1,62 @@
+[
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe1",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 1,
+        "isMainReturnAddress" : false,
+        "isMainPickupAddress" : true
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe2",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 1,
+        "isMainReturnAddress" : true,
+        "isMainPickupAddress" : false
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe3",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 2,
+        "isMainReturnAddress" : true,
+        "isMainPickupAddress" : false
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe4",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 2,
+        "isMainReturnAddress" : false,
+        "isMainPickupAddress" : true
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe5",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 3,
+        "isMainReturnAddress" : true,
+        "isMainPickupAddress" : false
+    },
+    {
+        "blockLotFloorBuildingName": "BLK 10 LT 11",
+        "streetAddress": "JohnDoe6",
+        "zipCode": "1000",
+        "isActive" : true,
+        "barangay_id" : 36719,
+        "merchant_id" : 3,
+        "isMainReturnAddress" : false,
+        "isMainPickupAddress" : true
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "id":2,
+        "origin_cityMunicipality_id": 1369,
+        "destination_cityMunicipality_id": 1372,
+        "fee": 55
+    },
+    {
+        "id":2,
+        "origin_cityMunicipality_id": 1372,
+        "destination_cityMunicipality_id": 1369,
+        "fee": 60
+    }
+]

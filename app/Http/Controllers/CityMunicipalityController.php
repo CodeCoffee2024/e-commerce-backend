@@ -33,18 +33,31 @@ class CityMunicipalityController extends Controller
             }
             $barangay = $request->query('barangay');
             $cityMunicipality = $request->query('cityMunicipality');
-            $cityMunicipalities = Barangay::where('barangays.isActive', true)->where('citymunicipalities.isActive', true)
+            $cityMunicipalities = Barangay::where('barangays.isActive', true)->where('city_municipalities.isActive', true)
                 ->when($barangay, function ($query, $barangay) {
                     return $query->where('barangays.description', 'like', '%' . $barangay . '%');
                 })
                 ->when($cityMunicipality, function ($query, $cityMunicipality) {
-                    return $query->where('cityMunicipalities.description', 'like', '%' . $cityMunicipality . '%');
+                    return $query->where('city_municipalities.description', 'like', '%' . $cityMunicipality . '%');
                 })
-                ->join('citymunicipalities', 'barangays.cityMunicipalityCode', '=', 'citymunicipalities.code') // Join on the cityMunicipalityCode
-                ->select('citymunicipalities.id', 'citymunicipalities.description')
+                ->join('city_municipalities', 'barangays.cityMunicipalityCode', '=', 'city_municipalities.code') // Join on the cityMunicipalityCode
+                ->select('city_municipalities.id', 'city_municipalities.description')
                 ->get();
             return CityMunicipalityFragment::collection($cityMunicipalities);
         }
+    }
+
+    public function all(Request $request) {
+        $region = $request->query('region');
+        $province = $request->query('province');
+        $cityMunicipalities = CityMunicipality::where('city_municipalities.isActive', true)
+        ->where('regions.id', '=', $region)
+        ->where('provinces.id', '=', $province)
+        ->join('provinces', 'provinces.code', '=', 'city_municipalities.provincialCode')
+        ->join('regions', 'regions.code', '=', 'provinces.regionCode')
+        ->select('city_municipalities.id', 'city_municipalities.description')
+        ->get();
+        return CityMunicipalityFragment::collection($cityMunicipalities);
     }
 
     /**

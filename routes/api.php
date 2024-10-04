@@ -34,11 +34,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/address/cityMunicipalities', [CityMunicipalityController::class, 'index']);
     Route::get('/address/barangays', [BarangayController::class, 'index']);
     Route::post('/address/createOrUpdate', [AddressController::class, 'store']);
-    Route::post('/address', [AddressController::class, 'index']);
+    Route::get('/address/getAll', [AddressController::class, 'getAll']);
+    Route::get('/address', [AddressController::class, 'index']);
+    Route::delete('/address', [AddressController::class, 'delete']);
+    Route::get('/address/defaultDeliveryAddress', [AddressController::class, 'defaultDeliveryAddress']);
 });
 Route::group([], function() {
     Route::get('/products', [ProductController::class, 'index']);
-    Route::get('/product/{id}', [ProductController::class, 'show']);
+    Route::get('/region/all', [RegionController::class, 'all']);
+    Route::get('/province/all', [ProvinceController::class, 'all']);
+    Route::get('/cityMunicipality/all', [CityMunicipalityController::class, 'all']);
+    Route::get('/product/{id}/{location}', [ProductController::class, 'show']);
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::post('/user/create', [UserController::class, 'store']);
     Route::post('/user/loginViaGoogle', [UserController::class, 'loginViaGoogle']);

@@ -12,12 +12,10 @@ class Address extends Model
     protected $fillable = [
         'blockLotFloorBuildingName',
         'streetAddress',
-        'isMainReturnAddress',
         'zipCode',
         'isMainDeliveryAddress',
         'isActive',
         'barangay_id'
-        
     ];
 
     public function user() {

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ShippingMatrix;
+use App\Models\CityMunicipality;
 use Illuminate\Http\Request;
+use App\Http\Resources\AddressFragment;
+use App\Http\Resources\CityMunicipalityFragment;
 use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductService;
 use App\Http\Requests\UpdateProductRequest;
@@ -42,9 +46,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($id, $location = null)
     {
         $product = Product::with(['merchant', 'category'])->findOrFail($id);
+        $shippingMatrix = $product->shippingMatrix($location);
+        $pickupAddress = $product->pickupAddress;
+        $userCityMunicipality = CityMunicipality::where('id', $pickupAddress->barangay->cityMunicipality->id)->first();
+        if ($location) {
+            $userCityMunicipality = CityMunicipality::where('id', $location)->first();
+        }
         return response()->json([
             'productName' => $product->name,
             'productDescription' => $product->description,
@@ -56,6 +66,10 @@ class ProductController extends Controller
             'isActive' => $product->isActive,
             'category' => $product->category,
             'merchant' => $product->merchant,
+            'pickupAddress' => new AddressFragment($pickupAddress),
+            'currentCityMunicipality' => new CityMunicipalityFragment ($userCityMunicipality),
+            'returnAddress' => $product->returnAddress,
+            'shippingFee' => $shippingMatrix ? $shippingMatrix->fee : ShippingMatrix::defaultFee(),
         ]);
     }
 

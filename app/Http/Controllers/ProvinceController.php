@@ -35,23 +35,33 @@ class ProvinceController extends Controller
             $cityMunicipality = $request->query('cityMunicipality');
             $province = $request->query('province');
             $provinces = Barangay::where('barangays.isActive', true)
-                ->where('citymunicipalities.isActive', true)
+                ->where('city_municipalities.isActive', true)
                 ->where('provinces.isActive', true)
                 ->when($barangay, function ($query, $barangay) {
                     return $query->where('barangays.description', 'like', '%' . $barangay . '%');
                 })
                 ->when($cityMunicipality, function ($query, $cityMunicipality) {
-                    return $query->where('cityMunicipalities.description', 'like', '%' . $cityMunicipality . '%');
+                    return $query->where('city_municipalities.description', 'like', '%' . $cityMunicipality . '%');
                 })
                 ->when($province, function ($query, $province) {
                     return $query->where('provinces.description', 'like', '%' . $province . '%');
                 })
-                ->join('citymunicipalities', 'barangays.cityMunicipalityCode', '=', 'citymunicipalities.code')
+                ->join('city_municipalities', 'barangays.cityMunicipalityCode', '=', 'city_municipalities.code')
                 ->join('provinces', 'barangays.provincialCode', '=', 'provinces.code')
                 ->select('provinces.id', 'provinces.description')
                 ->get();
             return ProvinceFragment::collection($provinces);
         }
+    }
+    
+    public function all(Request $request) {
+        $region = $request->query('region');
+        $provinces = Province::where('provinces.isActive', true)
+        ->where('regions.id', '=', $region)
+        ->join('regions', 'regions.code', '=', 'provinces.regionCode')
+        ->select('provinces.id', 'provinces.description')
+        ->get();
+        return ProvinceFragment::collection($provinces);
     }
 
     /**

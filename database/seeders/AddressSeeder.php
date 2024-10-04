@@ -19,12 +19,11 @@ class AddressSeeder extends Seeder
         foreach ($addresses as $key => $value) {
             Address::create([
                 "blockLotFloorBuildingName" => $value->blockLotFloorBuildingName,
-                "streetNumber" => $value->streetNumber,
+                "streetAddress" => $value->streetAddress,
                 "zipCode" => $value->zipCode,
                 "barangay_id" => $value->barangay_id,
                 "user_id" => $value->user_id,
-                "isMainShippingAddress" => $value->isMainShippingAddress,
-                "isMainReturnAddress" => $value->isMainReturnAddress,
+                "isMainDeliveryAddress" => $value->isMainDeliveryAddress,
                 "isActive"=> 1
             ]);
         }
