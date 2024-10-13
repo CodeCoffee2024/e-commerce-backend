@@ -38,8 +38,10 @@ class StoreAddressRequest extends FormRequest
             'region.id' => ['required', 'integer'], // Assuming the id is an integer
             'region.description' => ['required', 'string'],
             'zipCode' => 'required',
+            'name' => 'required',
+            'contactNumber' => ['required', 'max:11', 'min:9'],
             'isDefaultDeliveryAddress' => ['required', 'boolean'],
-            'isDefaultReturnAddress' => ['required', 'boolean'],
+            'isDefaultReturnAddress' => ['boolean'],
         ];
     }
     public function messages()
@@ -50,6 +52,10 @@ class StoreAddressRequest extends FormRequest
             'cityMunicipality.required' => 'City/Municipality is required',
             'barangay.required' => 'Barangay is required',
             'province.required' => 'Province is required',
+            'contactNumber.required' => 'Contact Number is required',
+            'contactNumber.min' => 'Contact Number length should be between 9 & 11',
+            'contactNumber.max' => 'Contact Number length should be between 9 & 11',
+            'name.required' => 'Name is required',
             'region.required' => 'Region is required',
             'zipCode.required' => 'Zipcode is required',
             'isDefaultDeliveryAddress.required' => 'Default delivery address is required',

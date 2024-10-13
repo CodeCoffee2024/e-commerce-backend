@@ -14,6 +14,8 @@ class Address extends Model
         'streetAddress',
         'zipCode',
         'isMainDeliveryAddress',
+        'name',
+        'contactNumber',
         'isActive',
         'barangay_id'
     ];

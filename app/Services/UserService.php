@@ -32,6 +32,8 @@ class UserService
                 $userArray['token'] = $token;
                 return $userArray;
             }
+        } else {
+            return $this->createUser($data);
         }
     }
     public function login($data) {
@@ -65,7 +67,7 @@ class UserService
             'email' => $data['email'],
             'isGoogleAccount' => $data['isGoogleAccount'],
             'isFacebookAccount' => $data['isFacebookAccount'],
-            'password' => Hash::make($data['password']), 
+            'password' => Hash::make(isset($data['password']) ? $data['password'] : ''), 
         ]);
         if (isset($data['google'])) {
             $userGoogle = UserGoogle::create([
@@ -79,7 +81,6 @@ class UserService
         if (isset($data['google']['phoneNumber'])) {
             $userGoogle['phoneNumber'] = $data['google']['phoneNumber'];
         }
-        
         $user->abilities = ['customer'];
         $token = $user->createToken(env('APP_NAME'))->plainTextToken;
         $expiration = Carbon::now()->addMinutes(config('sanctum.expiration'));

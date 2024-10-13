@@ -21,6 +21,8 @@ class AddressFragment extends JsonResource
             'isDefaultDeliveryAddress' => $this->isMainDeliveryAddress ?? null,
             'blockLotFloorBuildingName' => $this->blockLotFloorBuildingName,
             'streetAddress' => $this->streetAddress,
+            'contactNumber' => $this->contactNumber,
+            'name' => $this->name,
             'barangay' => new BarangayFragment($this->barangay),
             'cityMunicipality' => new CityMunicipalityFragment($this->barangay->cityMunicipality),
             'province' => new ProvinceFragment($this->barangay->province),

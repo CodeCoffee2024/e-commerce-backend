@@ -34,4 +34,10 @@ class MerchantAddress extends Model
     public function returnProducts() {
         return $this->hasMany(Product::class, 'return_address_id');
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_shipping_merchant', 'merchant_address_id', 'order_id')
+                    ->withPivot('shipping_cost')
+                    ->withTimestamps();
+    }
 }

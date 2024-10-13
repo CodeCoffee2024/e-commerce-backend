@@ -66,6 +66,15 @@ class RegionController extends Controller
         return RegionFragment::collection($regions);
     }
 
+    public function search(Request $request) {
+        $region = $request->query('region');
+        $regions = Region::where('isActive', true)
+        ->when($region, function ($query, $region) {
+            return $query->where('description', 'like', '%' . $region . '%');
+        })->get();
+        return RegionFragment::collection($regions);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

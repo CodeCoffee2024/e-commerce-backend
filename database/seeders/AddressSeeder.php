@@ -22,6 +22,8 @@ class AddressSeeder extends Seeder
                 "streetAddress" => $value->streetAddress,
                 "zipCode" => $value->zipCode,
                 "barangay_id" => $value->barangay_id,
+                "contactNumber" => $value->contactNumber,
+                "name" => $value->name,
                 "user_id" => $value->user_id,
                 "isMainDeliveryAddress" => $value->isMainDeliveryAddress,
                 "isActive"=> 1

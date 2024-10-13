@@ -10,6 +10,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\CityMunicipalityController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BarangayController;
 
 /*
@@ -36,12 +37,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/address/createOrUpdate', [AddressController::class, 'store']);
     Route::get('/address/getAll', [AddressController::class, 'getAll']);
     Route::get('/address', [AddressController::class, 'index']);
+    Route::post('/order/create', [OrderController::class, 'store']);
     Route::delete('/address', [AddressController::class, 'delete']);
     Route::get('/address/defaultDeliveryAddress', [AddressController::class, 'defaultDeliveryAddress']);
 });
 Route::group([], function() {
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/region/all', [RegionController::class, 'all']);
+    Route::get('/region/search', [RegionController::class, 'search']);
     Route::get('/province/all', [ProvinceController::class, 'all']);
     Route::get('/cityMunicipality/all', [CityMunicipalityController::class, 'all']);
     Route::get('/product/{id}/{location}', [ProductController::class, 'show']);

@@ -5,6 +5,8 @@
         "zipCode": "1000",
         "isActive" : true,
         "barangay_id" : 1,
+        "contactNumber": "123123123",
+        "name": "John Doe",
         "user_id" : 1,
         "isMainDeliveryAddress" : true
     },
@@ -14,7 +16,9 @@
         "zipCode": "1200",
         "isActive" : true,
         "barangay_id" : 3,
+        "name": "Jane Doe",
         "user_id" : 1,
+        "contactNumber": "123123123",
         "isMainDeliveryAddress" : false
     }
 ]

@@ -66,9 +66,10 @@ class AddressController extends Controller
         )->get();
         return AddressFragment::collection($addresses);
     }
+
     public function defaultDeliveryAddress()
     {
-        $address = Address::where('addresses.isActive', true)->where('addresses.user_id', $this->user->id)->where('addresses.isMainDeliveryAddress', true)        
+        $address = Address::where('addresses.isActive', true)->where('addresses.user_id', $this->user->id)->orderBy('addresses.isMainDeliveryAddress', 'desc')
         ->join('barangays', 'barangays.id', '=', 'addresses.barangay_id')
         ->join('city_municipalities', 'barangays.cityMunicipalityCode', '=', 'city_municipalities.code')
         ->join('provinces', 'barangays.provincialCode', '=', 'provinces.code')
@@ -76,6 +77,7 @@ class AddressController extends Controller
         ->select(
         'addresses.id',
         'addresses.zipCode',
+        'addresses.contactNumber',
         'addresses.isMainDeliveryAddress',
         'addresses.blockLotFloorBuildingName',
         'addresses.streetAddress',
@@ -88,7 +90,11 @@ class AddressController extends Controller
         'regions.id as region_id',
         'regions.description as region_description'
         )->first();
-        return new AddressFragment($address);
+        if ($address) {
+            return new AddressFragment($address);
+        } else {
+            return null;
+        }
     }
 
     /**

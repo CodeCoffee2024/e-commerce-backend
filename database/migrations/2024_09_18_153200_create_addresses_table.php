@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('blockLotFloorBuildingName');
             $table->string('streetAddress');
+            $table->string('contactNumber');
+            $table->string('name');
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('barangay_id')->index()->nullable();

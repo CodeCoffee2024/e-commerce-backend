@@ -77,6 +77,8 @@ class AddressService
                 $address = Address::create([
                     'blockLotFloorBuildingName' => $data['blockLotFloorBuildingName'],
                     'streetAddress' => $data['streetAddress'],
+                    'contactNumber' => $data['contactNumber'],
+                    'name' => $data['name'],
                     'zipCode' => $data['zipCode'],
                     'isMainDeliveryAddress' => $data['isDefaultDeliveryAddress'],
                     'barangay_id' => $barangay->barangayId,
@@ -86,7 +88,9 @@ class AddressService
                 $address = Address::findOrFail($data['id']);
                 $address->update([
                     'blockLotFloorBuildingName' => $data['blockLotFloorBuildingName'],
+                    'contactNumber' => $data['contactNumber'],
                     'streetAddress' => $data['streetAddress'],
+                    'name' => $data['name'],
                     'zipCode' => $data['zipCode'],
                     'isMainDeliveryAddress' => $data['isDefaultDeliveryAddress'],
                     'barangay_id' => $barangay->barangayId,
