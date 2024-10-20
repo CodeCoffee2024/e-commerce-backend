@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserRole;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AddressFragment  extends JsonResource
+class AddressResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,7 +22,11 @@ class AddressFragment  extends JsonResource
             'blockLotFloorBuildingName' => $this->blockLotFloorBuildingName,
             'streetAddress' => $this->streetAddress,
             'contactNumber' => $this->contactNumber,
-            'name' => $this->name
+            'name' => $this->name,
+            'barangay' => new BarangayFragment($this->barangay),
+            'cityMunicipality' => new CityMunicipalityFragment($this->barangay->cityMunicipality),
+            'province' => new ProvinceFragment($this->barangay->province),
+            'region' => new RegionFragment($this->barangay->region)
         ];
     }
 }

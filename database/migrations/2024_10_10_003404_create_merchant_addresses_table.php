@@ -34,14 +34,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('order_shipping_merchant', function (Blueprint $table) {
+        Schema::create('order_shipping_merchants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('merchant_address_id');
             $table->decimal('shipping_cost', 8, 2);  // Shipping cost per merchant for this order
             $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('merchant_address_id')->references('id')->on('merchant_addresses')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
         });
         
     }

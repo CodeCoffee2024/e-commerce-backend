@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('shipping_address_id')->references('id')->on('addresses')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('totalPrice', 8, 2);
             $table->decimal('totalShipping', 8, 2);
+            $table->string('reference_number');
             $table->string('paymentOption');
             $table->string('status');
             $table->timestamps();

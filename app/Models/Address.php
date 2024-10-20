@@ -26,4 +26,7 @@ class Address extends Model
     public function barangay() {
         return $this->belongsTo(Barangay::class,'barangay_id');    
     }
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

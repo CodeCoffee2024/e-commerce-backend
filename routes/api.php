@@ -37,6 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/address/createOrUpdate', [AddressController::class, 'store']);
     Route::get('/address/getAll', [AddressController::class, 'getAll']);
     Route::get('/address', [AddressController::class, 'index']);
+    Route::get('order/my-orders', [OrderController::class, 'myOrders']);
+    Route::get('order/list', [OrderController::class, 'list']);
     Route::post('/order/create', [OrderController::class, 'store']);
     Route::delete('/address', [AddressController::class, 'delete']);
     Route::get('/address/defaultDeliveryAddress', [AddressController::class, 'defaultDeliveryAddress']);

@@ -6,7 +6,7 @@ use App\Models\Address;
 use App\Services\AddressService;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
-use App\Http\Resources\AddressFragment;
+use App\Http\Resources\AddressResource;
 use App\Models\LoginLog;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -36,7 +36,7 @@ class AddressController extends Controller
             ->where('isActive', true)
             ->findOrFail($addressId);
     
-            return new AddressFragment($address);
+            return new AddressResource($address);
         }
     }
     /**
@@ -64,7 +64,7 @@ class AddressController extends Controller
         'regions.id as region_id',
         'regions.description as region_description'
         )->get();
-        return AddressFragment::collection($addresses);
+        return AddressResource::collection($addresses);
     }
 
     public function defaultDeliveryAddress()
@@ -91,7 +91,7 @@ class AddressController extends Controller
         'regions.description as region_description'
         )->first();
         if ($address) {
-            return new AddressFragment($address);
+            return new AddressResource($address);
         } else {
             return null;
         }
@@ -140,7 +140,7 @@ class AddressController extends Controller
         'regions.id as region_id',
         'regions.description as region_description'
         )->get();
-        return AddressFragment::collection($addresses);
+        return AddressResource::collection($addresses);
     }
 
     /**

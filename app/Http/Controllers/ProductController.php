@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\ShippingMatrix;
 use App\Models\CityMunicipality;
 use Illuminate\Http\Request;
-use App\Http\Resources\AddressFragment;
+use App\Http\Resources\AddressResource;
 use App\Http\Resources\CityMunicipalityFragment;
 use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductService;
@@ -66,7 +66,7 @@ class ProductController extends Controller
             'isActive' => $product->isActive,
             'category' => $product->category,
             'merchant' => $product->merchant,
-            'pickupAddress' => new AddressFragment($pickupAddress),
+            'pickupAddress' => new AddressResource($pickupAddress),
             'currentCityMunicipality' => new CityMunicipalityFragment ($userCityMunicipality),
             'returnAddress' => $product->returnAddress,
             'shippingFee' => $shippingMatrix ? $shippingMatrix->fee : ShippingMatrix::defaultFee(),
