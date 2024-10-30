@@ -15,4 +15,7 @@ class Merchant extends Model
     public function products() {
         return $this->hasMany(Product::class, 'merchant_id');
     }
+    public function shippingMerchants() {
+        return $this->hasMany(ShippingMerchant::class);
+    }
 }

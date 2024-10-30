@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
+            $table->string('username')->unique()->nullable();
             $table->string('mobileNumber')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('isGoogleAccount')->default(false);
+            $table->boolean('isAdmin')->default(false);
             $table->boolean('isFacebookAccount')->default(false);
             $table->string('password')->nullable();
             $table->boolean('isActive')->default(true);

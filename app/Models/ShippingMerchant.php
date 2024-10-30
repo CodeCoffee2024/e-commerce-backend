@@ -14,4 +14,7 @@ class ShippingMerchant extends Model
                     ->withPivot('shipping_cost')
                     ->withTimestamps();
     }
+    public function merchant() {
+        return $this->belongsTo(Merchant::class,'merchant_id');    
+    }
 }

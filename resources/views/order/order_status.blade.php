@@ -88,7 +88,7 @@
                 <th class="text-align-right">Qty</th>
                 <th class="text-align-right pr-2">Price</th>
             </tr> 
-            @foreach ($order->items as $item)
+            @foreach ($items as $item)
                 <tr>
                     <td class="d-flex align-items-start">
                         <img src="https://media.istockphoto.com/id/182177931/photo/picture-frame-isolated-on-white.jpg?s=612x612&w=0&k=20&c=xJDz9mhFhEccRSnaYZCx6-HnP1LwIk3G6oyMW7LAF8E=" width="70" height="70">
@@ -108,10 +108,10 @@
                     </td>
                     <td>
                         <div>
-                            <div class="text-align-right"><strong>Subtotal: </strong>{{ $order['totalPrice'] }}</div>
-                            <div class="text-align-right"><strong>Shipping Fee: </strong>{{ $order['totalShipping'] }}</div>
+                            <div class="text-align-right"><strong>Subtotal: </strong>{{ number_format($subTotal, 2) }}</div>
+                            <div class="text-align-right"><strong>Shipping Fee: </strong>{{ number_format($order['totalShipping'], 2) }}</div>
                             <div class="text-align-right">
-                                <strong class="font-md color-primary-color">Grand Total: </strong> <span class="color-primary-color font-md">{{ $order['totalShipping'] + $order['totalPrice'] }}</span>
+                                <strong class="font-md color-primary-color">Grand Total: </strong> <span class="color-primary-color font-md">{{ number_format($order['totalShipping'] + $subTotal, 2) }}</span>
                             </div>
                         </div>
                     </td>
@@ -119,11 +119,14 @@
             </tfoot>
         </table>
         <div class="font-lg mt-1 pl-2"><strong>Order Status</strong></div>
-        <div class="font-md mt-1 pl-2 color-primary-color"><strong>Order has been placed</strong></div>
-        <div class="font-md mt-1 pl-2 ">{{\Carbon\Carbon::parse($order['created_at'])->format('F d, Y')}}</div>
-        <!-- <div class="pt-4 bg-primary-highlight-color pr-1 ml-2 w-0"></div>
-        <div class="font-md mt-1 pl-2 text-dark"><strong>Order has been shipp</strong></div>
-        <div class="pt-4 bg-dark pr-1 ml-2 w-0"></div> -->
+        <div class="font-md mt-1 pl-2"><strong>Order has been placed</strong></div>
+        <div class="font-md mt-1 pl-2 ">{{\Carbon\Carbon::parse($order['created_at'])->format('F d, Y h:mm A')}}</div>
+        
+        @foreach ($logs as $log)
+            <div class="pt-4 bg-primary-highlight-color pr-1 ml-2 w-0"></div>
+            <div class="font-md mt-1 pl-2 color-primary-color"><strong>{{$statusDescription[$log['status']]}}</strong></div>
+            <div class="font-md mt-1 pl-2 ">{{\Carbon\Carbon::parse($log['created_at'])->format('F d, Y h:m A')}}</div>
+        @endforeach
     </div>
 </body>
 </html>

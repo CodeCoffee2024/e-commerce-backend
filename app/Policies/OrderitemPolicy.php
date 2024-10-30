@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class OrderPolicy
+class OrderItemPolicy
 {
     use HandlesAuthorization;
 
@@ -57,14 +57,14 @@ class OrderPolicy
     {
         //
     }
-    public function canSetAsToShip(User $user, Order $order) {
-        return $order->items()->where('status', Order::STATUS_PENDING)->count() == $order->items()->count() ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
+    public function canSetAsToShip(User $user, OrderItem $orderItem) {
+        return $orderItem->status == Order::STATUS_PENDING ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
     }
-    public function canSetAsForDelivery(User $user, Order $order) {
-        return $order->items()->where('status', Order::STATUS_TO_SHIP)->count() == $order->items()->count() ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
+    public function canSetAsForDelivery(User $user, OrderItem $orderItem) {
+        return $orderItem->status == Order::STATUS_TO_SHIP ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
     }
-    public function canSetAsReceived(User $user, Order $order) {
-        return $order->items()->where('status', Order::STATUS_FOR_DELIVERY)->count() == $order->items()->count() ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
+    public function canSetAsReceived(User $user, OrderItem $orderItem) {
+        return $orderItem->status == Order::STATUS_FOR_DELIVERY ? Response::allow() : Response::deny("Update Failed. Please refresh the page.");
     }
 
     /**

@@ -56,6 +56,26 @@ class UserService
             return $userArray;
         }
     }
+    public function loginAdmin($data) {
+        $user = User::where('username', $data['username'])->first();
+        if (!$user || !Hash::check($data['password'], $user->password)) {
+            throw ValidationException::withMessages([
+                'password' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+        $existingToken = $user->createToken(env('APP_NAME'))->plainTextToken;
+        if ($user) {
+            $token = $existingToken;
+            $expiration = Carbon::now()->addMinutes(config('sanctum.expiration'));
+            $user->loginLog->expires_at = $expiration;
+            $user->loginLog->save();
+            $user->load('cart');
+            $user->save();
+            $userArray = $user->toArray();
+            $userArray['token'] = $token;
+            return $userArray;
+        }
+    }
 
     public function createUser($data)
     {   

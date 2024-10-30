@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->json('cart');
             $table->unsignedBigInteger('shipping_address_id')->index()->nullable();
             $table->foreign('shipping_address_id')->references('id')->on('addresses')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('totalPrice', 8, 2);

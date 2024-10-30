@@ -21,6 +21,10 @@ class Product extends Model
         return $this->belongsTo(MerchantAddress::class, 'pickup_address_id');    
     }
 
+    public function orderItems() {
+        return $this->hasMany(OrderItem::class, 'product_id');
+    }
+
     public function returnAddress() {
         return $this->belongsTo(MerchantAddress::class, 'return_address_id');    
     }
@@ -29,10 +33,10 @@ class Product extends Model
         $returnId = CityMunicipality::where('code', $this->returnAddress->barangay->cityMunicipalityCode)->first();
         if ($location) {
             return ShippingMatrix::where('origin_cityMunicipality_id', $pickupId->id)
-                                 ->where('destination_cityMunicipality_id', $location)
-                                 ->first();
+            ->where('destination_cityMunicipality_id', $location)
+            ->first();
         }
         return ShippingMatrix::where('origin_cityMunicipality_id', $pickupId->id)
-                             ->first();
+        ->first();
     }
 }

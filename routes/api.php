@@ -38,8 +38,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/address/getAll', [AddressController::class, 'getAll']);
     Route::get('/address', [AddressController::class, 'index']);
     Route::get('order/my-orders', [OrderController::class, 'myOrders']);
-    Route::get('order/list', [OrderController::class, 'list']);
+    Route::post('order/list', [OrderController::class, 'list']);
     Route::post('/order/create', [OrderController::class, 'store']);
+    Route::post('/order/customerList', [OrderController::class, 'listCustomer']);
+    Route::post('/order/shipToList', [OrderController::class, 'listShipTo']);
+    Route::put('/order/setAsToShip', [OrderController::class, 'setAsToShip']);
+    Route::put('/order/setAsForDelivery', [OrderController::class, 'setAsForDelivery']);
+    Route::put('/order/receive-item', [OrderController::class, 'setAsReceived']);
+    Route::get('/order/{id}', [OrderController::class, 'show']);
     Route::delete('/address', [AddressController::class, 'delete']);
     Route::get('/address/defaultDeliveryAddress', [AddressController::class, 'defaultDeliveryAddress']);
 });
@@ -54,4 +60,5 @@ Route::group([], function() {
     Route::post('/user/create', [UserController::class, 'store']);
     Route::post('/user/loginViaGoogle', [UserController::class, 'loginViaGoogle']);
     Route::post('/user/login', [UserController::class, 'login']);
+    Route::post('/user/login-admin', [UserController::class, 'loginAdmin']);
 });

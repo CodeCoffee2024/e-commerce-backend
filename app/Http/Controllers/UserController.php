@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserLoginAdminRequest;
 use App\Http\Requests\GoogleUserRequest;
 use Illuminate\Http\Request;
 use App\Services\UserService;
@@ -44,6 +45,12 @@ class UserController extends Controller
     public function login(UserLoginRequest $request)
     {
         $user = $this->userService->login($request->validated());
+        return response()->json(['user' => $user], 201);
+    }
+
+    public function loginAdmin(UserLoginAdminRequest $request)
+    {
+        $user = $this->userService->loginAdmin($request->validated());
         return response()->json(['user' => $user], 201);
     }
 
